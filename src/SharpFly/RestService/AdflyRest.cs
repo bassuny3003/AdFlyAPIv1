@@ -1,20 +1,13 @@
-﻿using System;
-using System.Web;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Collections.Generic;
+﻿using AdFlyAPIv1.Config;
+using System;
 using System.Security.Cryptography;
-
-using SharpFly.Config;
-
-using DSoft.RestService.Events;
+using System.Text;
 using DSoftRest = DSoft.RestService.RestService;
 using DSoftUtil = DSoft.RestService.Utils.WebUtility;
 
-namespace SharpFly.RestService
+namespace AdFlyAPIv1.RestService
 {
-  internal class AdflyRest : DSoftRest
+    internal class AdflyRest : DSoftRest
   {
     public Configuration Configuration { get; internal set; }
 
@@ -47,9 +40,9 @@ namespace SharpFly.RestService
       string query = DSoftUtil.GenerateSortedParams(this.Params);
 
       var encoding = new System.Text.UTF8Encoding();
-      byte[] key = encoding.GetBytes(Configuration.Secret_Key);
+      byte[] key = encoding.GetBytes(Configuration.Public_Key); // Old Use Is "Configuration.Secret_Key" but you can Use "Configuration.Public_Key"
 
-      HMACSHA256 sha256 = new HMACSHA256(key);
+            HMACSHA256 sha256 = new HMACSHA256(key);
 
       byte[] digest = sha256.ComputeHash(Encoding.UTF8.GetBytes(query));
       StringBuilder builder = new StringBuilder();

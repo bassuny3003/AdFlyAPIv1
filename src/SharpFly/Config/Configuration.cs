@@ -1,8 +1,6 @@
-﻿using System;
-
-namespace SharpFly.Config
+﻿namespace AdFlyAPIv1.Config
 {
-  public class Configuration
+    public class Configuration
   {
     public string Public_Key  { get; internal set; }
     public string Secret_Key  { get; internal set; }

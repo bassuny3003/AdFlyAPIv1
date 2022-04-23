@@ -7,8 +7,8 @@
     <ProjectGuid>{3EB16CC3-F6B9-4D40-BFF1-2132900B493C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SharpFly</RootNamespace>
-    <AssemblyName>SharpFly</AssemblyName>
+    <RootNamespace>AdFlyAPIv1</RootNamespace>
+    <AssemblyName>AdFlyAPIv1</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />

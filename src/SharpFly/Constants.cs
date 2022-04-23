@@ -1,8 +1,6 @@
-﻿using System;
-
-namespace SharpFly
+﻿namespace AdFlyAPIv1
 {
-  public enum AuthType
+    public enum AuthType
   {
     BASIC,
     HMAC

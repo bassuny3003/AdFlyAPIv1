@@ -1,15 +1,11 @@
-﻿using System;
+﻿using AdFlyAPIv1.Config;
+using AdFlyAPIv1.RestService;
+using System;
 using System.Collections.Generic;
-using System.Security.Cryptography;
-using System.Linq;
-using System.Text;
 
-using SharpFly.Config;
-using SharpFly.RestService;
-
-namespace SharpFly
+namespace AdFlyAPIv1
 {
-  public class AdflyApi
+    public class AdflyApi
   {
     private string AdflyURL { get => "https://api.adf.ly"; }
 
@@ -22,7 +18,18 @@ namespace SharpFly
       this.rest_service = new AdflyRest(this.configuration);
     }
 
-    public AdflyApi(string public_key, string secret_key, ulong user_id)
+    public AdflyApi(string public_key, ulong user_id)
+    {
+        this.configuration = new Configuration()
+        {
+            Public_Key = public_key,
+            User_Id = user_id
+        };
+
+        this.rest_service = new AdflyRest(this.configuration);
+    }
+
+        public AdflyApi(string public_key, string secret_key, ulong user_id)
     {
       this.configuration = new Configuration()
       {
@@ -111,6 +118,28 @@ namespace SharpFly
 
       this.rest_service.Prepare();
       return this.rest_service.SendPostRequest();
+    }
+
+    public string Shorten(List<string> urls, string domain, string advertType, long groupId)
+    {
+        this.rest_service.Uri = $"{AdflyURL}/v1/shorten";
+        this.rest_service.ClearParams();
+
+        if (domain != null)
+            this.rest_service.AddParam("domain", domain);
+
+        if (advertType != null)
+            this.rest_service.AddParam("advert_type", advertType);
+
+        if (groupId != 0)
+            this.rest_service.AddParam("group_id", groupId);
+
+        int index = 0;
+        foreach (string url in urls)
+            this.rest_service.AddParam($"url[{index++}]", url);
+
+        this.rest_service.Prepare();
+        return this.rest_service.SendPostRequest();
     }
 
     public string GetUrls()
