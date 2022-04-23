@@ -29,7 +29,7 @@ namespace AdFlyAPIv1
         this.rest_service = new AdflyRest(this.configuration);
     }
 
-        public AdflyApi(string public_key, string secret_key, ulong user_id)
+    public AdflyApi(string public_key, string secret_key, ulong user_id)
     {
       this.configuration = new Configuration()
       {
