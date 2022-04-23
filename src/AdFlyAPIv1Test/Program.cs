@@ -41,16 +41,19 @@ namespace AdFlyAPIv1Test
 
             List<ResponseData> Response = JSONArray.ToObject<List<ResponseData>>();
 
-            Console.WriteLine(JSONObject);
+            //Console.WriteLine(JSONObject);
 
-            for (int i = 0; i < Response.Count; i++)
-            {
-                Console.WriteLine("===================== " + (i + 1) + " =====================");
+            //for (int i = 0; i < Response.Count; i++)
+            //{
+            //    Console.WriteLine("===================== " + (i + 1) + " =====================");
 
-                Console.WriteLine(Response[i].id);
-                Console.WriteLine(Response[i].url);
-                Console.WriteLine(Response[i].short_url);
-            }
+            //    Console.WriteLine(Response[i].id);
+            //    Console.WriteLine(Response[i].url);
+            //    Console.WriteLine(Response[i].short_url);
+            //}
+
+
+
 
             Console.ReadLine();
         }

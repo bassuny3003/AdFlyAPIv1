@@ -139,6 +139,7 @@ namespace AdFlyAPIv1
             this.rest_service.AddParam($"url[{index++}]", url);
 
         this.rest_service.Prepare();
+
         return this.rest_service.SendPostRequest();
     }
 
