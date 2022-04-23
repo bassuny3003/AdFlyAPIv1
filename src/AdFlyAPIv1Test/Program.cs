@@ -8,9 +8,23 @@ namespace AdFlyAPIv1Test
 {
     class Program
     {
+        /// <summary>
+        /// This Code Only For Testing The AdFlyAPIv1.dll 
+        /// </summary>
         static void Main(string[] args)
         {
-            AdflyApi adflyApi = new AdflyApi("4035c8e1d3931ac1fec5f8d1cec122c1", 1503418);
+            ulong UserID;
+            string PublicAPI;
+
+            Console.WriteLine("Please Write Your Adfly User ID :\n");
+            UserID = Convert.ToUInt64(Console.ReadLine());
+
+            Console.WriteLine("Please Write Your Adfly API Key :\n");
+            PublicAPI = Convert.ToString(Console.ReadLine());
+
+            Console.Clear();
+
+            AdflyApi adflyApi = new AdflyApi(PublicAPI, UserID);
 
             List<string> LongURLs = new List<string>();
 
@@ -38,10 +52,7 @@ namespace AdFlyAPIv1Test
                 Console.WriteLine(Response[i].short_url);
             }
 
-
-
             Console.ReadLine();
-
         }
     }
 }
