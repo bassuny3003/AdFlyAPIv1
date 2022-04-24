@@ -40,9 +40,9 @@ namespace AdFlyAPIv1.RestService
       string query = DSoftUtil.GenerateSortedParams(this.Params);
 
       var encoding = new System.Text.UTF8Encoding();
-      byte[] key = encoding.GetBytes(Configuration.Public_Key); // Old Use Is "Configuration.Secret_Key" but you can Use "Configuration.Public_Key"
+      byte[] key = encoding.GetBytes(Configuration.Secret_Key); // Old Use Is "Configuration.Secret_Key" but you can Use "Configuration.Public_Key"
 
-            HMACSHA256 sha256 = new HMACSHA256(key);
+      HMACSHA256 sha256 = new HMACSHA256(key);
 
       byte[] digest = sha256.ComputeHash(Encoding.UTF8.GetBytes(query));
       StringBuilder builder = new StringBuilder();

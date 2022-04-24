@@ -41,6 +41,26 @@ namespace AdFlyAPIv1
       this.rest_service = new AdflyRest(this.configuration);
     }
 
+    public string GetUserProfileDetails()
+    {
+        this.rest_service.Uri = $"{AdflyURL}/v1/profile";
+        this.rest_service.ClearParams();
+
+        this.rest_service.Prepare(AuthType.HMAC);
+
+        return this.rest_service.SendGetRequest();
+    }    
+
+    public string GetUserAccountDetails()
+    {
+        this.rest_service.Uri = $"{AdflyURL}/v1/account";
+        this.rest_service.ClearParams();
+
+        this.rest_service.Prepare(AuthType.HMAC);
+
+        return this.rest_service.SendGetRequest();
+    }
+
     public string GetGroup()
     {
       return GetGroup(1);
@@ -55,6 +75,70 @@ namespace AdFlyAPIv1
       this.rest_service.Prepare(AuthType.HMAC);
 
       return rest_service.SendGetRequest();
+    }
+    
+    public string GetDomains()
+    {
+        this.rest_service.Uri = $"{AdflyURL}/v1/domains";
+        this.rest_service.ClearParams();
+
+        this.rest_service.Prepare(AuthType.HMAC);
+
+        return this.rest_service.SendGetRequest();
+    }    
+
+    public string GetAccountTotalReferrals(int includeBanned = 0)
+    {
+        this.rest_service.Uri = $"{AdflyURL}/v1/accountTotalReferrals";
+        this.rest_service.ClearParams();
+
+        if (includeBanned != 0)
+        {
+            this.rest_service.AddParam("includeBanned", includeBanned);
+        }
+
+        this.rest_service.Prepare(AuthType.HMAC);
+
+        return this.rest_service.SendGetRequest();
+    }
+
+    public string GetAccountCountries()
+    {
+        this.rest_service.Uri = $"{AdflyURL}/v1/accountCountries";
+        this.rest_service.ClearParams();
+
+        this.rest_service.Prepare(AuthType.HMAC);
+
+        return this.rest_service.SendGetRequest();
+    }    
+      
+    public string GetWithdrawalTransactions()
+    {
+        this.rest_service.Uri = $"{AdflyURL}/v1/withdrawalTransactions";
+        this.rest_service.ClearParams();
+
+        this.rest_service.Prepare(AuthType.HMAC);
+
+        return this.rest_service.SendGetRequest();
+    }
+
+    public string GetWithdrawInformation()
+    {
+        this.rest_service.Uri = $"{AdflyURL}/v1/withdraw";
+        this.rest_service.ClearParams();
+
+        this.rest_service.Prepare(AuthType.HMAC);
+
+        return this.rest_service.SendGetRequest();
+    }
+    public string RequestWithdraw()
+    {
+        this.rest_service.Uri = $"{AdflyURL}/v1/requestWithdraw";
+        this.rest_service.ClearParams();
+
+        this.rest_service.Prepare(AuthType.HMAC);
+
+        return this.rest_service.SendGetRequest();
     }
 
     public string Expand(string completeUrl)
