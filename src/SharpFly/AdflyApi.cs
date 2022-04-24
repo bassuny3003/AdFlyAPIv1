@@ -63,10 +63,10 @@ namespace AdFlyAPIv1
 
     public string GetGroup()
     {
-      return GetGroup(1);
+      return GetGroups(1);
     }
 
-    public string GetGroup(int page)
+    public string GetGroups(int page)
     {
       this.rest_service.Uri = $"{AdflyURL}/v1/urlGroups";
       this.rest_service.ClearParams();
@@ -75,6 +75,17 @@ namespace AdFlyAPIv1
       this.rest_service.Prepare(AuthType.HMAC);
 
       return rest_service.SendGetRequest();
+    }
+        
+    public string CreateGroup(string GroupName)
+    {
+      this.rest_service.Uri = $"{AdflyURL}/v1/urlGroups";
+      this.rest_service.ClearParams();
+
+      this.rest_service.AddParam("name", GroupName);
+      this.rest_service.Prepare(AuthType.HMAC);
+
+      return rest_service.SendPostRequest();
     }
     
     public string GetDomains()
@@ -237,8 +248,7 @@ namespace AdFlyAPIv1
       this.rest_service.Uri = $"{AdflyURL}/v1/urls";
       this.rest_service.ClearParams();
 
-      this.rest_service.AddParam("_page", page)
-                       .AddParam("q", searchStr);
+      this.rest_service.AddParam("_page", page).AddParam("q", searchStr);
 
       this.rest_service.Prepare(AuthType.HMAC);
       return this.rest_service.SendGetRequest();

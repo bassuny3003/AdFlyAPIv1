@@ -54,7 +54,7 @@ namespace AdFlyAPIv1Test
                 Console.WriteLine(Response[i].short_url);
             }
 
-            string test = adflyApi.GetUrls();
+            string test = adflyApi.CreateGroup("FaceBook Group");
 
             JObject Object = JObject.Parse(test);
 
